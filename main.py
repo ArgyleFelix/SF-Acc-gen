@@ -59,7 +59,6 @@ def CaracterCreation():
     time.sleep(2)
 
     #get class name (read string from display (#start x, start y, end x, end y))
-    #start x, start y, end x, end y
     getclasstype = ImageGrab.grab(bbox =(233, 549, 408, 602))
     classtype = pytesseract.image_to_string(cv2.cvtColor(numpy.array(getclasstype), cv2.COLOR_BGR2GRAY), lang ='eng')
 
