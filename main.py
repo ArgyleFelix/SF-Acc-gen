@@ -9,7 +9,25 @@ import keyboard
 import random
 import string
 import os
+import requests
 from PIL import ImageGrab
+from distutils.version import LooseVersion, StrictVersion
+
+currentversion = "1.0.0"
+
+def checkversion():
+    site_request = requests.get("https://raw.githubusercontent.com/ArgyleFelix/SF-Acc-gen/main/version.txt")
+    site_response = str(site_request.content)
+    if LooseVersion(currentversion) < LooseVersion(site_response):
+        print("The script is outdated! Updating...")
+        file_path = os.path.realpath(__file__)
+        print(file_path)
+        #download new version
+        response = requests.get("https://raw.githubusercontent.com/ArgyleFelix/SF-Acc-gen/main/main.py")
+        with open(file_path, "wb") as f:
+            f.write(response.content)
+        quit()
+checkversion()
 
 #scrolling down 17 times with down arrow
 def scrolldown():
