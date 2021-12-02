@@ -27,6 +27,7 @@ def CaracterCreation():
     #details
     password = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16)) #random alphanumeric generator
     link = "https://temp-mail.org/hu/"
+    pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 
     #new
     click1 = 771, 784
@@ -58,7 +59,6 @@ def CaracterCreation():
     time.sleep(2)
 
     #get class name (read string from display (#start x, start y, end x, end y))
-    pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
     #start x, start y, end x, end y
     getclasstype = ImageGrab.grab(bbox =(233, 549, 408, 602))
     classtype = pytesseract.image_to_string(cv2.cvtColor(numpy.array(getclasstype), cv2.COLOR_BGR2GRAY), lang ='eng')
@@ -75,7 +75,6 @@ def CaracterCreation():
     time.sleep(2)
 
     #name (read string from display (#start x, start y, end x, end y))
-    pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
     getname = ImageGrab.grab(bbox =(1250, 745, 1555, 806))
     name = pytesseract.image_to_string(cv2.cvtColor(numpy.array(getname), cv2.COLOR_BGR2GRAY), lang ='eng')
 
