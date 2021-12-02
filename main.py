@@ -13,7 +13,7 @@ import requests
 from PIL import ImageGrab
 from distutils.version import LooseVersion, StrictVersion
 
-currentversion = "1.4.3"
+currentversion = "1.4.4"
 
 def checkversion():
     site_request = requests.get("https://raw.githubusercontent.com/ArgyleFelix/SF-Acc-gen/main/version.txt")
