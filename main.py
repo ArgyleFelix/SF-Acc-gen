@@ -13,7 +13,7 @@ import requests
 from PIL import ImageGrab
 from distutils.version import LooseVersion
 
-currentversion = "1.4.5"
+currentversion = "1.4.6"
 
 def checkversion():
     site_request = requests.get("https://raw.githubusercontent.com/ArgyleFelix/SF-Acc-gen/main/version.txt")
@@ -28,6 +28,8 @@ def checkversion():
             f.write(response.content)
         quit()
 checkversion()
+
+print("Type the amount of accounts you want or type \"endless\" for limitless run.")
 
 #scrolling down 17 times with down arrow
 def scrolldown():
@@ -273,15 +275,27 @@ def CaracterCreation():
 
     time.sleep(2)                      
 
-#execution function loop with int value as a loop round
 try:
     print("How many accounts do you want?")
-    userInput = int(input())
-    x = 1
-    for i in range(userInput):
-        CaracterCreation()
-        print("Account", "#" + x, "done.")
-        x + 1
-    print("Done")
+    userInput = input()
+    #execution function loop with int value as a loop round
+    if userInput.isdigit():
+        numberInput = int(userInput)
+        x = 1
+        for i in range(numberInput):
+            CaracterCreation()
+            print("Account", "#" + str(x), "done.")
+            x = x + 1
+        print("Done")
+    else:
+        #if input is "endless" then run a while True loop
+        if userInput == "endless":
+            print("Endless mode activated. Press \"Ctrl + C\" to exit.")
+            y = 1
+            while True:
+                CaracterCreation()
+                print("Account", "#" + str(y), "done.")
+                y = y + 1          
 except KeyboardInterrupt:
+    print("Script has been closed.")
     pass
