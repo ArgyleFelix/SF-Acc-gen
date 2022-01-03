@@ -11,9 +11,9 @@ import string
 import os
 import requests
 from PIL import ImageGrab
-from distutils.version import LooseVersion, StrictVersion
+from distutils.version import LooseVersion
 
-currentversion = "1.4.4"
+currentversion = "1.4.5"
 
 def checkversion():
     site_request = requests.get("https://raw.githubusercontent.com/ArgyleFelix/SF-Acc-gen/main/version.txt")
@@ -103,12 +103,12 @@ def CaracterCreation():
             with open("Account List.txt", "r+") as f:
                 old = f.read()
                 f.seek(0)
-                name = name.replace('\f','')
-                classtype = classtype.replace('\f','')
+                name = name.replace("\f", "")
+                classtype = classtype.replace("\f", "")
                 f.write(old + name + "\n" + password + "\n" + classtype + "\n")
                 break
         else:
-                f= open("Account List.txt", "w+")
+                f = open("Account List.txt", "w+")
                 f.write("")
                 f.close
                 continue
@@ -276,8 +276,12 @@ def CaracterCreation():
 #execution function loop with int value as a loop round
 try:
     print("How many accounts do you want?")
-    for i in range(int(input())):
+    userInput = int(input())
+    x = 1
+    for i in range(userInput):
         CaracterCreation()
-        print("Done")
+        print("Account", "#" + x, "done.")
+        x + 1
+    print("Done")
 except KeyboardInterrupt:
     pass
