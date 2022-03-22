@@ -13,7 +13,7 @@ import requests
 from PIL import ImageGrab
 from distutils.version import LooseVersion
 
-currentversion = "1.4.6"
+currentversion = "1.4.7"
 
 def checkversion():
     site_request = requests.get("https://raw.githubusercontent.com/ArgyleFelix/SF-Acc-gen/main/version.txt")
@@ -112,7 +112,7 @@ def CaracterCreation():
         else:
                 f = open("Account List.txt", "w+")
                 f.write("")
-                f.close
+                f.close()
                 continue
 
     time.sleep(2)
